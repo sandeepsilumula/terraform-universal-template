@@ -2,12 +2,12 @@ resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = { Name = "${var.environment}-vpc" }
+  tags                 = { Name = "${var.environment}-vpc" }
 }
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
-  tags = { Name = "${var.environment}-igw" }
+  tags   = { Name = "${var.environment}-igw" }
 }
 
 resource "aws_subnet" "public" {
@@ -16,7 +16,7 @@ resource "aws_subnet" "public" {
   cidr_block              = var.public_subnet_cidrs[count.index]
   availability_zone       = var.availability_zones[count.index]
   map_public_ip_on_launch = true # Required for Free Tier web access
-  tags = { Name = "${var.environment}-public-subnet-${count.index + 1}" }
+  tags                    = { Name = "${var.environment}-public-subnet-${count.index + 1}" }
 }
 
 resource "aws_subnet" "private" {
@@ -24,7 +24,7 @@ resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.private_subnet_cidrs[count.index]
   availability_zone = var.availability_zones[count.index]
-  tags = { Name = "${var.environment}-private-subnet-${count.index + 1}" }
+  tags              = { Name = "${var.environment}-private-subnet-${count.index + 1}" }
 }
 
 resource "aws_route_table" "public" {

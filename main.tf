@@ -14,15 +14,15 @@ module "security" {
 }
 
 module "compute" {
-  source            = "./modules/compute"
-  environment       = var.environment
-  instance_type     = var.instance_type
-  vpc_id            = module.networking.vpc_id
+  source        = "./modules/compute"
+  environment   = var.environment
+  instance_type = var.instance_type
+  vpc_id        = module.networking.vpc_id
   # We deploy to the PUBLIC subnet to avoid costly NAT Gateway charges (Free Tier Safe)
-  subnet_id         = module.networking.public_subnet_ids[0] 
+  subnet_id         = module.networking.public_subnet_ids[0]
   security_group_id = module.security.app_sg_id
 
-  key_pair_name     = var.key_pair_name
+  key_pair_name = var.key_pair_name
 }
 
 
