@@ -13,6 +13,9 @@ resource "aws_instance" "app_server" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [var.security_group_id]
 
+  key_name = var.key_pair_name
+
+
   # Automatically installs a basic web server upon boot
   user_data = <<-EOF
               #!/bin/bash

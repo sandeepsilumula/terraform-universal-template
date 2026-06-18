@@ -21,4 +21,8 @@ module "compute" {
   # We deploy to the PUBLIC subnet to avoid costly NAT Gateway charges (Free Tier Safe)
   subnet_id         = module.networking.public_subnet_ids[0] 
   security_group_id = module.security.app_sg_id
+
+  key_pair_name     = var.key_pair_name
 }
+
+
