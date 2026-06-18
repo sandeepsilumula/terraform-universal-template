@@ -1,0 +1,9 @@
+environment          = "dev"
+aws_region           = "us-east-1"
+project_name         = "portfolio-app"
+vpc_cidr             = "10.0.0.0/16"
+public_subnet_cidrs  = ["10.0.1.0/24"]
+private_subnet_cidrs = ["10.0.11.0/24"]
+availability_zones   = ["us-east-1a"]
+instance_type        = "t2.micro" # Free Tier eligible
+key_pair_name        = "DevOps_Admin"
